@@ -1,7 +1,3 @@
-function helloWorld() {
-	return "Hello World!";
-}
-
 function Man (name, age) {
 	this.live = function () {
 		return "Nope, goodbye, cruel world.";

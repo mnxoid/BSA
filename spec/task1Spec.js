@@ -1,8 +1,4 @@
 describe("Task 1", function() {
-	it("Says hello", function() {
-			expect(helloWorld()).toEqual("Hello World!");
-	});
-
 	it("Creates Man correctly", function() {
 		var m = new Man("Adam", 25);
 
