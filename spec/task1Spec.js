@@ -1,4 +1,4 @@
-describe("Task 1", function() {
+describe("Task 1 - Javascript introduction", function() {
 	it("Creates Man correctly", function() {
 		var m = new Man("Adam", 25);
 
