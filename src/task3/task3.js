@@ -63,45 +63,45 @@ db.once('open', function (callback) {
 	function Q2(callback)
 	{
 		Student.find({
-						scores: {
-							$elemMatch: { 
-								score: { $gt: 93, $lt: 95} 
-							} 
-						} 
-					},function(err, docs) {
-						console.log("-----------FIND STUDENTS WITH A MARK WITHIN (93,95)-----------");
-						if(JSON.stringify(docs) === "[]"){
-							console.log("No entries");
-							callback();
-							return;
-						}
-						for(i in docs) console.log(docs[i].name);
-						callback();
-		});
+			scores: {
+				$elemMatch: { 
+					score: { $gt: 93, $lt: 95} 
+				} 
+			} 
+			},function(err, docs) {
+				console.log("-----------FIND STUDENTS WITH A MARK WITHIN (93,95)-----------");
+				if(JSON.stringify(docs) === "[]"){
+					console.log("No entries");
+					callback();
+					return;
+				}
+				for(i in docs) console.log(docs[i].name);
+				callback();
+			});
 	}
 
 	//FIND STUDENTS WITH EXAM MARK OVER 90
 	function Q3(callback)
 	{
 		Student.aggregate([
-						{
-							$unwind: "$scores"
-						},
-						{
-							$match:{
-								"scores.type": "exam",
-								"scores.score": { $gt: 90}
-							} 
-						}])
+			{
+				$unwind: "$scores"
+			},
+			{
+				$match:{
+					"scores.type": "exam",
+					"scores.score": { $gt: 90}
+				} 
+			}])
 		.exec(function(err, docs) {
-							console.log("-----------FIND STUDENTS WITH EXAM MARK OVER 90---------------");
-							if(JSON.stringify(docs) === "[]"){
-								console.log("No entries");
-								callback();
-								return;
-							}
-							for(i in docs) console.log(docs[i].name);
-							callback();
+			console.log("-----------FIND STUDENTS WITH EXAM MARK OVER 90---------------");
+			if(JSON.stringify(docs) === "[]"){
+				console.log("No entries");
+				callback();
+				return;
+			}
+			for(i in docs) console.log(docs[i].name);
+			callback();
 		});
 	}
 
