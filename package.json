@@ -1,0 +1,9 @@
+{
+  "name": "BSA",
+  "description": "BSA homeworks",
+  "author": "mnxoid",
+  "dependencies": {
+    "async": "^0.8.0",
+    "mongoose": "^4.0.4"
+  }
+}
