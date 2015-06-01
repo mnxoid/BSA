@@ -24,29 +24,29 @@ db.once('open', function (callback) {
 	function Q1(callback)
 	{
 		Student.aggregate([
-							{
-								$match: { 
-									scores: {
-										$not: {
-											$elemMatch: { 
-												score: { $lt: 93} 
-											} 
-										} 
-									} 
-								} 
-							},
-							{
-								$match: { 
-									scores: {
-										$not: {
-											$elemMatch: { 
-												score: { $gt: 95} 
-											} 
-										} 
-									} 
-								} 
-							}
-						])
+			{
+				$match: { 
+					scores: {
+						$not: {
+							$elemMatch: { 
+								score: { $lt: 93} 
+							} 
+						} 
+					} 
+				} 
+			},
+			{
+				$match: { 
+					scores: {
+						$not: {
+							$elemMatch: { 
+								score: { $gt: 95} 
+							} 
+						} 
+					} 
+				} 
+			}
+		])
 		.exec(function(err, docs) {
 			console.log("-----------FIND STUDENTS WITH ALL MARKS WITHIN (93,95)--------");
 			if(JSON.stringify(docs) === "[]"){
