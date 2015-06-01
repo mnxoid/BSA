@@ -37,3 +37,9 @@ function duckType2 () {
 	if (this.live==undefined) return "ERROR!";
 	if (this.study==undefined) return "Man"; else return "Student";
 }
+
+module.exports.Man = Man;
+module.exports.Student1 = Student1;
+module.exports.Student2 = Student2;
+module.exports.duckType1 = duckType1;
+module.exports.duckType2 = duckType2;

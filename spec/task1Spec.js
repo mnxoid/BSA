@@ -1,3 +1,11 @@
+if(typeof require !== "undefined") {
+	var task1 = require('../src/task1/task1');
+	var Man = task1.Man;
+	var Student1 = task1.Student1;
+	var Student2 = task1.Student2;
+	var duckType1 = task1.duckType1;
+	var duckType2 = task1.duckType2;
+}
 describe("Task 1 - Javascript introduction", function() {
 	it("Creates Man correctly", function() {
 		var m = new Man("Adam", 25);
