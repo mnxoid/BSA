@@ -43,15 +43,20 @@ var counter = 4;
 		    });
 		    $( ".checkbtn" ).click(function() {
 		    	if($(this).text()===" Check all ") {
-			    	$("input:checkbox:not(:checked)").click();
-			    	$(this).text("Uncheck all");
+		    		if($("input:checkbox:not(:checked)").length > 0){
+				    	$("input:checkbox:not(:checked)").click();
+				    	$(this).text("Uncheck all");
+				    }
 		    	} else {
-		    		$("input:checkbox:checked").click();
-			    	$(this).text(" Check all ");
+		    		if($("input:checkbox:checked").length>0){
+			    		$("input:checkbox:checked").click();
+				    	$(this).text(" Check all ");
+				    }
 		    	}
 		    });
 		    $( ".clearbtn" ).click(function() {
 		    	$("input:checkbox:checked").parent().find(".xicon").click();
+		    	$(".checkbtn").text(" Check all ");
 		    });
 		    $("body").click(function(e) {
 		    	if($(e.target).closest("input:text").length==0){
