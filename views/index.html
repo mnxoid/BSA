@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Goods list by mnxoid</title>
+		<meta name="author" content="Mnxoid" />
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo1.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<link rel="stylesheet" type="text/css" href="css/set2.css" />
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component1.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<script src="js/modernizr.custom.js"></script>
+		<script src="js/svgcheckbx.js"></script>
+		<style type="text/css">
+			.mx-auto {
+				margin-right: auto;
+				margin-left: auto;
+			}
+			.xicon {
+				height: 2em;
+				margin-top: 0.5em;
+				margin-left: auto;
+				float: right;
+				cursor: pointer;
+			}
+			.hide {
+				visibility: hidden;
+			}
+			#sortable > li:hover > .hide
+			{
+				visibility: visible;
+			}
+			.ed_input {
+				height: 40px;
+				width: 100%;
+				/*margin-top: 2em;
+				margin-bottom: 2em;*/
+			}
+		</style>
+		<script>
+			var counter = 4;
+			var addItem;
+			var original;
+		  $(function() {
+		    $( "#sortable" ).sortable();
+		    $( "#sortable" ).disableSelection();
+		    function elemListeners() {
+			    $( ".xicon" ).click(function() {
+			    	$(this).parent().slideUp(function() {
+			    		$(this).remove();
+			    	});
+			    });
+			    $( "#sortable > li").dblclick(function() {
+			    	//need to add editing
+			    	original = $(this).text();
+			    	var id = $(this).find("input").attr("id");
+			    	$(this).replaceWith("<li><input class=\"input_field ed_input\" value=\""+ original +"\" /></li>");
+			    	Mousetrap(document.querySelector( ".ed_input" )).bind('enter',function(e, combo) {
+						$(".ed_input").parent().replaceWith("<li><input id=\""+id+"\" name=\""+id+"\" type=\"checkbox\"><label for=\""+id+"\">"+ $(".ed_input").val() +"</label><img class=\"xicon hide\" src=\"cross.svg\"></li>");
+						initChbx();
+						elemListeners();
+					});
+					Mousetrap(document.querySelector( ".ed_input" )).bind('esc',function(e, combo) {
+						$(".ed_input").parent().replaceWith("<li><input id=\""+id+"\" name=\""+id+"\" type=\"checkbox\"><label for=\""+id+"\">"+ original +"</label><img class=\"xicon hide\" src=\"cross.svg\"></li>");
+						initChbx();
+						elemListeners();
+					});
+			    });
+			}
+			elemListeners();
+			addItem = function() {
+				if($(".nameinput").val()==="") return;
+				counter++;
+		    	var id = "cb" + counter;
+		    	$( "#sortable" ).prepend("<li><input id=\""+id+"\" name=\""+id+"\" type=\"checkbox\"><label for=\""+id+"\">"+ $(".nameinput").val() +"</label><img class=\"xicon hide\" src=\"cross.svg\"></li>");
+		    	$(".nameinput").val("");
+		    	// var checkbxsCheckmark = Array.prototype.slice.call( document.querySelectorAll( 'form.ac-checkmark input[type="checkbox"]' ) );
+		    	initChbx();
+		    	elemListeners();
+			}
+		    $( ".addbtn" ).click(function() {
+		    	addItem();
+		    });
+		    $( ".checkbtn" ).click(function() {
+		    	if($(this).text()===" Check all ") {
+			    	$("input:checkbox:not(:checked)").click();
+			    	$(this).text("Uncheck all");
+		    	} else {
+		    		$("input:checkbox:checked").click();
+			    	$(this).text(" Check all ");
+		    	}
+		    });
+		    $( ".clearbtn" ).click(function() {
+		    	$("input:checkbox:checked").parent().find(".xicon").click();
+		    });
+		    $("body").click(function() {
+		    	counter++;
+		    	var id = "cb" + counter;
+		    	$(".ed_input").parent().replaceWith("<li><input id=\""+id+"\" name=\""+id+"\" type=\"checkbox\"><label for=\""+id+"\">"+ original +"</label><img class=\"xicon hide\" src=\"cross.svg\"></li>");
+				initChbx();
+				elemListeners();
+			});
+		  });
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<h1 style="text-align:center;font-size:500%">List of goods:</h1>
+			<section class="content" style="text-align: center">
+				<span class="input input--kozakura">
+					<input class="mousetrap nameinput input__field input__field--kozakura" type="text" id="input-7" />
+					<label class="input__label input__label--kozakura" for="input-7">
+						<span class="input__label-content input__label-content--kozakura" data-content="Name">Add new item</span>
+					</label>
+					<svg class="graphic graphic--kozakura" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path d="M1200,9c0,0-305.005,0-401.001,0C733,9,675.327,4.969,598,4.969C514.994,4.969,449.336,9,400.333,9C299.666,9,0,9,0,9v43c0,0,299.666,0,400.333,0c49.002,0,114.66,3.484,197.667,3.484c77.327,0,135-3.484,200.999-3.484C894.995,52,1200,52,1200,52V9z"/>
+					</svg>
+				</span>
+				<!-- <button class="addbtn btn btn-6 btn-6a">Add</button> -->
+				<button class="checkbtn btn btn-6 btn-6a" style="margin-right:1em;width:342px"> Check all </button>
+				<button class="clearbtn btn btn-6 btn-6a">Clear checked</button>
+			</section>
+			<section class="mx-auto">
+				<form class="ac-custom ac-checkbox ac-checkmark" autocomplete="off">
+					<!-- <h2 style="text-align:center;font-size:500%">List of goods:</h2> -->
+					<ul id="sortable">
+						<li><input id="cb1" name="cb1" type="checkbox"><label for="cb1">Cabbage</label><img class="xicon hide" src="cross.svg"></li>
+						<li><input id="cb2" name="cb2" type="checkbox"><label for="cb2">Cheese</label><img class="xicon hide" src="cross.svg"></li>
+						<li><input id="cb3" name="cb3" type="checkbox"><label for="cb3">Potatoes</label><img class="xicon hide" src="cross.svg"></li>
+						<li><input id="cb4" name="cb4" type="checkbox"><label for="cb4">Bananas</label><img class="xicon hide" src="cross.svg"></li>
+					<ul>
+				</form>
+			</section>
+		</div><!-- /container -->
+		<script src="https://craig.global.ssl.fastly.net/js/mousetrap/mousetrap.js?7e022"></script>
+		<script type="text/javascript">
+			initChbx();
+			Mousetrap(document.querySelector( ".nameinput" )).bind('enter',function(e, combo) {
+				addItem();
+			});
+		</script>
+	</body>
+</html>
