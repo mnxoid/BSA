@@ -22,3 +22,22 @@
 	/*margin-top: 2em;
 	margin-bottom: 2em;*/
 }
+.srclink {
+	padding: 1em;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.5);
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.srclink:hover{
+	background-color: rgba(0,0,0,0.2);
+	font-size: 200%;
+}
+.srclink > a {
+	font-weight: 400;
+	text-decoration: none;
+	color: #fff;
+}
