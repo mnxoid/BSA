@@ -99,12 +99,14 @@
 		    $( ".clearbtn" ).click(function() {
 		    	$("input:checkbox:checked").parent().find(".xicon").click();
 		    });
-		    $("body").click(function() {
-		    	counter++;
-		    	var id = "cb" + counter;
-		    	$(".ed_input").parent().replaceWith("<li><input id=\""+id+"\" name=\""+id+"\" type=\"checkbox\"><label for=\""+id+"\">"+ original +"</label><img class=\"xicon hide\" src=\"cross.svg\"></li>");
-				initChbx();
-				elemListeners();
+		    $("body").click(function(e) {
+		    	if($(e.target).closest("input:text").length==0){
+			    	counter++;
+			    	var id = "cb" + counter;
+			    	$(".ed_input").parent().replaceWith("<li><input id=\""+id+"\" name=\""+id+"\" type=\"checkbox\"><label for=\""+id+"\">"+ original +"</label><img class=\"xicon hide\" src=\"cross.svg\"></li>");
+					initChbx();
+					elemListeners();
+				}
 			});
 		  });
 		</script>
