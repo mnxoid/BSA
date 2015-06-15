@@ -1,0 +1,24 @@
+.mx-auto {
+	margin-right: auto;
+	margin-left: auto;
+}
+.xicon {
+	height: 2em;
+	margin-top: 0.5em;
+	margin-left: auto;
+	float: right;
+	cursor: pointer;
+}
+.hide {
+	visibility: hidden;
+}
+#sortable > li:hover > .hide
+{
+	visibility: visible;
+}
+.ed_input {
+	height: 40px;
+	width: 100%;
+	/*margin-top: 2em;
+	margin-bottom: 2em;*/
+}

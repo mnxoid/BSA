@@ -11,105 +11,14 @@
 		<link rel="stylesheet" type="text/css" href="css/demo1.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
 		<link rel="stylesheet" type="text/css" href="css/set2.css" />
-		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="css/default.css" /> -->
 		<link rel="stylesheet" type="text/css" href="css/component1.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 		<script src="js/modernizr.custom.js"></script>
 		<script src="js/svgcheckbx.js"></script>
-		<style type="text/css">
-			.mx-auto {
-				margin-right: auto;
-				margin-left: auto;
-			}
-			.xicon {
-				height: 2em;
-				margin-top: 0.5em;
-				margin-left: auto;
-				float: right;
-				cursor: pointer;
-			}
-			.hide {
-				visibility: hidden;
-			}
-			#sortable > li:hover > .hide
-			{
-				visibility: visible;
-			}
-			.ed_input {
-				height: 40px;
-				width: 100%;
-				/*margin-top: 2em;
-				margin-bottom: 2em;*/
-			}
-		</style>
-		<script>
-			var counter = 4;
-			var addItem;
-			var original;
-		  $(function() {
-		    $( "#sortable" ).sortable();
-		    $( "#sortable" ).disableSelection();
-		    function elemListeners() {
-			    $( ".xicon" ).click(function() {
-			    	$(this).parent().slideUp(function() {
-			    		$(this).remove();
-			    	});
-			    });
-			    $( "#sortable > li").dblclick(function() {
-			    	//need to add editing
-			    	original = $(this).text();
-			    	var id = $(this).find("input").attr("id");
-			    	$(this).replaceWith("<li><input class=\"input_field ed_input\" value=\""+ original +"\" /></li>");
-			    	Mousetrap(document.querySelector( ".ed_input" )).bind('enter',function(e, combo) {
-						$(".ed_input").parent().replaceWith("<li><input id=\""+id+"\" name=\""+id+"\" type=\"checkbox\"><label for=\""+id+"\">"+ $(".ed_input").val() +"</label><img class=\"xicon hide\" src=\"cross.svg\"></li>");
-						initChbx();
-						elemListeners();
-					});
-					Mousetrap(document.querySelector( ".ed_input" )).bind('esc',function(e, combo) {
-						$(".ed_input").parent().replaceWith("<li><input id=\""+id+"\" name=\""+id+"\" type=\"checkbox\"><label for=\""+id+"\">"+ original +"</label><img class=\"xicon hide\" src=\"cross.svg\"></li>");
-						initChbx();
-						elemListeners();
-					});
-			    });
-			}
-			elemListeners();
-			addItem = function() {
-				if($(".nameinput").val()==="") return;
-				counter++;
-		    	var id = "cb" + counter;
-		    	$( "#sortable" ).prepend("<li><input id=\""+id+"\" name=\""+id+"\" type=\"checkbox\"><label for=\""+id+"\">"+ $(".nameinput").val() +"</label><img class=\"xicon hide\" src=\"cross.svg\"></li>");
-		    	$(".nameinput").val("");
-		    	// var checkbxsCheckmark = Array.prototype.slice.call( document.querySelectorAll( 'form.ac-checkmark input[type="checkbox"]' ) );
-		    	initChbx();
-		    	elemListeners();
-			}
-		    $( ".addbtn" ).click(function() {
-		    	addItem();
-		    });
-		    $( ".checkbtn" ).click(function() {
-		    	if($(this).text()===" Check all ") {
-			    	$("input:checkbox:not(:checked)").click();
-			    	$(this).text("Uncheck all");
-		    	} else {
-		    		$("input:checkbox:checked").click();
-			    	$(this).text(" Check all ");
-		    	}
-		    });
-		    $( ".clearbtn" ).click(function() {
-		    	$("input:checkbox:checked").parent().find(".xicon").click();
-		    });
-		    $("body").click(function(e) {
-		    	if($(e.target).closest("input:text").length==0){
-			    	counter++;
-			    	var id = "cb" + counter;
-			    	$(".ed_input").parent().replaceWith("<li><input id=\""+id+"\" name=\""+id+"\" type=\"checkbox\"><label for=\""+id+"\">"+ original +"</label><img class=\"xicon hide\" src=\"cross.svg\"></li>");
-					initChbx();
-					elemListeners();
-				}
-			});
-		  });
-		</script>
+		<link rel="stylesheet" type="text/css" href="css/mnxoid.css" />
+		<script type="text/javascript" src="js/mnxoid.js"></script>
 	</head>
 	<body>
 		<div class="container">

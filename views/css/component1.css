@@ -30,22 +30,6 @@
 	transition: all 0.3s;
 }
 
-/* Pseudo elements for icons */
-.btn:before,
-.icon-heart:after,
-.icon-star:after,
-.icon-plus:after,
-.icon-file:before {
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	position: relative;
-	-webkit-font-smoothing: antialiased;
-}
 
 
 /* Button 6 */

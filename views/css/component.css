@@ -73,10 +73,6 @@
 	transition: opacity 0.3s;
 }
 
-.ac-radio label::before {
-	border-radius: 50%;
-}
-
 .ac-custom input[type="checkbox"]:checked + label,
 .ac-custom input[type="radio"]:checked + label {
 	text-decoration: line-through;
@@ -109,77 +105,6 @@
 }
 
 /* Specific input, SVG and path styles */
-
-/* Circle */
-.ac-circle input[type="checkbox"],
-.ac-circle input[type="radio"],
-.ac-circle label::before {
-	width: 30px;
-	height: 30px;
-	margin-top: -15px;
-	left: 10px;
-	position: absolute;
-}
-
-.ac-circle label::before {
-	background-color: #fff;
-	border: none;
-}
-
-.ac-circle svg {
-	width: 70px;
-	height: 70px;
-	margin-top: -35px;
-	left: -10px;
-}
-
-.ac-circle svg path {
-	stroke-width: 5px;
-} 
-
-/* Box Fill */
-.ac-boxfill svg path {
-	stroke-width: 8px;
-} 
-
-/* Swirl */
-.ac-swirl svg path {
-	stroke-width: 8px;
-}
-
-/* List */
-.ac-list ol {
-	list-style: decimal;
-	list-style-position: inside;
-}
-
-.ac-list ol li {
-	font-size: 2em;
-	padding: 1em 1em 0 2em;
-	text-indent: -40px;
-}
-
-.ac-list ol li label {
-	font-size: 1em;
-	text-indent: 0;
-	padding-left: 30px;
-}
-
-.ac-list label::before {
-	display: none;
-}
-
-.ac-list svg {
-	width: 100%;
-	height: 80px;
-	left: 0;
-	top: 1.2em;
-	margin-top: 0px;
-}
-
-.ac-list svg path {
-	stroke-width: 4px;
-}
 
 /* Media Queries */
 @media screen and (max-width: 50em) {
